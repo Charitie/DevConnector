@@ -1,22 +1,16 @@
 import express from 'express';
-import {
-  check,
-  validationResult
-} from 'express-validator';
+import { check,validationResult } from 'express-validator';
 import gravatar from 'gravatar';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { config } from '../../config';
 import moment from 'moment';
 
-
+import { config } from '../../config';
 import User from '../../models/user';
 import createToken from '../../middleware/helpers/jwtHelper';
 import EncryptData from '../../middleware/helpers/encryptPassword';
 
 const router = express.Router();
 
-//@route        GET api/users
+//@route        GET /users
 //@description  Test route
 //@access       Public
 
@@ -66,16 +60,19 @@ router.post('/users', [
       }
     }
 
-    const token = createToken({payload}, config.secretKey) 
-      res.json({ token })
+    const token = createToken(payload, config.secretKey) 
+      res.json({ 
+        message: 'User registered successfully',
+        token
+       })
 
   } catch(err) {
-    console.log(err.message);
+    console.log('users error', err.message);
     res.status(500).send('Server error');
   }
 
 
-  res.send('user registered')
+  // res.send('user registered')
 })
 
 export default router;

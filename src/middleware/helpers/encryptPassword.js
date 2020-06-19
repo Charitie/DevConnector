@@ -5,9 +5,9 @@ class EncryptData {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
   }
 
-  // static async compareHash(inputPassword, hashedPassword) {
-  //   return bcrypt.compare(inputPassword, hashedPassword);
-  // }
+  static async compareHash(inputPassword, hashedPassword) {
+    return bcrypt.compare(inputPassword, hashedPassword);
+  }
 }
 
 export default EncryptData;
