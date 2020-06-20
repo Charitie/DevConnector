@@ -1,8 +1,12 @@
 import express from 'express';
 import morgan from 'morgan';
 
-import { config } from './config';
-import { connectDB } from './db';
+import {
+  config
+} from './config';
+import {
+  connectDB
+} from './db';
 
 import userRoute from './routes/api/users';
 import authRoute from './routes/api/auth';
@@ -14,7 +18,9 @@ const app = express();
 
 app.use(morgan('dev'));
 //init middleware
-app.use(express.json({ extended: false }));
+app.use(express.json({
+  extended: false
+}));
 
 //Connect DB
 connectDB();
@@ -29,6 +35,6 @@ app.use(postsRoute);
 
 app.use(globalErrorHandler)
 
-const PORT = config.PORT || 5000;
+const PORT = config.PORT || 8000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

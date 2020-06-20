@@ -16,7 +16,6 @@ export default function(req, res, next) {
         throw new CustomError(401, 'Token is not valid');
       } else {
         req.user = decoded.user;
-        console.log(decoded)
         next();
       }
     });
