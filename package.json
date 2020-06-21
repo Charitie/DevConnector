@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node --exec babel-node src/server",
     "server": "nodemon --exec babel-node src/server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client \"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -9,6 +9,8 @@ export const config = {
   PORT: process.env.PORT,
   mongoURI: `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@devconnector-0culr.mongodb.net/<dbname>?retryWrites=true&w=majority`,
   secretKey: process.env.SECRET_KEY,
-  jwtExpiration: process.env.JWT_EXPIRATION
+  jwtExpiration: process.env.JWT_EXPIRATION,
+  githubClientId: process.env.GITHUB_CLIENT_ID,
+  githubSecret: process.env.GITHUB_SECRET
 }
 
