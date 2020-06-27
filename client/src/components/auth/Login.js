@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../store/actions/authAction';
@@ -37,7 +37,7 @@ const Login = ({ login, isAuthenticated }) => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            // required
+            required
           />
         </div>
         <div className="form-group">
