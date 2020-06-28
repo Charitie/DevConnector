@@ -5,9 +5,10 @@ import {
 } from 'express-validator';
 import request from 'request';
 
-import auth from '../../middleware/helpers/auth'
-import Profile from '../../models/profile'
-import User from '../../models/user'
+import auth from '../../middleware/helpers/auth';
+import Profile from '../../models/profile';
+import User from '../../models/user';
+import Post from '../../models/post';
 import { config } from '../../config';
 
 const router = express.Router()
@@ -171,7 +172,7 @@ router.get('/profile/user/:user_id', async (req, res) => {
 router.delete('/profile', auth, async (req, res) => {
   try {
     //@todo - remove users posts
-
+    await Post.deleteMany({ user: req.user.id })
     //Remove profile
     await Profile.findOneAndDelete({
       user: req.user.id
