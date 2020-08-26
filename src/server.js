@@ -1,31 +1,29 @@
-import express from 'express';
-import morgan from 'morgan';
+import express from "express";
+import morgan from "morgan";
 
-import {
-  config
-} from './config';
-import {
-  connectDB
-} from './db';
+import { config } from "./config";
+import { connectDB } from "./db";
 
-import userRoute from './routes/api/users';
-import authRoute from './routes/api/auth';
-import profileRoute from './routes/api/profile';
-import postsRoute from './routes/api/posts';
-import globalErrorHandler from './middleware/helpers/globalErrorHandler';
+import userRoute from "./routes/api/users";
+import authRoute from "./routes/api/auth";
+import profileRoute from "./routes/api/profile";
+import postsRoute from "./routes/api/posts";
+import globalErrorHandler from "./middleware/helpers/globalErrorHandler";
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 //init middleware
-app.use(express.json({
-  extended: false
-}));
+app.use(
+	express.json({
+		extended: false,
+	})
+);
 
 //Connect DB
 connectDB();
 
-app.get('/', (req, res) => res.send('API running'));
+app.get("/", (req, res) => res.send("API running"));
 
 //Define Routes
 app.use(userRoute);
@@ -33,7 +31,7 @@ app.use(authRoute);
 app.use(profileRoute);
 app.use(postsRoute);
 
-app.use(globalErrorHandler)
+app.use(globalErrorHandler);
 
 const PORT = config.PORT || 8000;
 
